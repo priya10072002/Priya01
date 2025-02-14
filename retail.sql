@@ -1,6 +1,5 @@
-
-     5. Retail Store Inventory System
-REATE DATABASE RetailDB;
+Retail Store Inventory System
+CREATE DATABASE RetailDB;
 USE RetailDB;
 CREATE TABLE Products (
     id INT AUTO_INCREMENT PRIMARY KEY,
