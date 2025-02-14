@@ -1,0 +1,69 @@
+
+
+                                       3. Library management 
+-- 1. Create the Database
+CREATE DATABASE LibraryDB;
+USE LibraryDB;
+
+-- 2. Create Tables
+
+-- Books Table
+CREATE TABLE Books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    published_year YEAR NOT NULL,
+    genre VARCHAR(30)
+);
+
+-- Members Table
+CREATE TABLE Members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    membership_date DATE NOT NULL
+);
+
+-- Borrowing Table
+CREATE TABLE Borrowing (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT,
+    member_id INT,
+    borrow_date DATE NOT NULL,
+    return_date DATE,
+    FOREIGN KEY (book_id) REFERENCES Books(id),
+    FOREIGN KEY (member_id) REFERENCES Members(id)
+);
+
+-- 3. Insert Sample Data
+
+-- Insert into Books
+INSERT INTO Books (title, author, published_year, genre)
+VALUES
+    ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Fiction'),
+    ('1984', 'George Orwell', 1949, 'Dystopian'),
+    ('To Kill a Mockingbird', 'Harper Lee', 1960, 'Fiction'),
+    ('Moby-Dick', 'Herman Melville', 1851, 'Adventure');
+
+-- Insert into Members
+INSERT INTO Members (name, membership_date)
+VALUES
+    ('Alice Johnson', '2022-01-15'),
+    ('Bob Smith', '2021-11-23'),
+    ('Charlie Brown', '2020-06-30');
+
+-- Insert into Borrowing
+INSERT INTO Borrowing (book_id, member_id, borrow_date, return_date)
+VALUES
+    (1, 1, '2023-01-01', '2023-01-15'),
+    (2, 2, '2023-01-05', '2023-01-12'),
+    (3, 1, '2023-02-10', '2023-02-20'),
+    (4, 3, '2023-03-01', '2023-03-10');
+
+-- 4. Queries
+
+-- List all books
+SELECT * FROM Books;
+
+-- List all members
+SELECT * FROM Members;
+
